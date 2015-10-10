@@ -39,34 +39,30 @@ import java.io.IOException;
  * Time: 00:13:07
  * To change this template use File | Settings | File Templates.
  */
-public class ShadowTest
-{
-public static class X
-{
-    int x = 10;
-}
+public class ShadowTest {
+    public static void main(String[] args) throws IOException {
+        Y ob = new Y();
+        ob.x = 55;
+        ob.x = 66;
 
-public static class Y extends X
-{
-    int x = 20;
-    String s = "Hello";
-    Integer i = new Integer(7);
-}
+        ObjectWriter writer = new SimpleWriter();
+        Element el = writer.write(ob);
+        XMLOutputter out = new XMLOutputter();
+        out.output(el, System.out);
+        Object obj = new SimpleReader().read(el);
+        el = new SimpleWriter().write(obj);
+        System.out.println("");
+        System.out.println("Should be the same as before...");
+        out.output(el, System.out);
+    }
 
-public static void main(String[] args) throws IOException
-{
-    Y ob = new Y();
-    ob.x = 55;
-    ob.x = 66;
+    public static class X {
+        int x = 10;
+    }
 
-    ObjectWriter writer = new SimpleWriter();
-    Element el = writer.write(ob);
-    XMLOutputter out = new XMLOutputter();
-    out.output(el, System.out);
-    Object obj = new SimpleReader().read(el);
-    el = new SimpleWriter().write(obj);
-    System.out.println("");
-    System.out.println("Should be the same as before...");
-    out.output(el, System.out);
-}
+    public static class Y extends X {
+        int x = 20;
+        String s = "Hello";
+        Integer i = new Integer(7);
+    }
 }

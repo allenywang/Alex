@@ -37,6 +37,10 @@ import ch.idsia.tools.amico.AmiCoJavaPy;
  * Time: 8:29:15 PM
  * Package: ch.idsia.controllers.agents
  */
+
+/**
+ * Class works with Amico Python package agents
+ */
 public class AmiCoAgent implements Agent
 {
 static AmiCoJavaPy amicoJavaPy = null;

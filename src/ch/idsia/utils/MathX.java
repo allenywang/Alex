@@ -34,14 +34,12 @@ package ch.idsia.utils;
  * Time: 3:26:43 PM
  * Package: ch.idsia.utils
  */
-public class MathX
-{
-public static void show(char el)
-{
-    System.out.print("block (" + Integer.valueOf(el) + ") :");
-    for (int i = 0; i < 16; ++i)
-        System.out.print((el << i) + " ");
-    System.out.println("");
-}
+public class MathX {
+    public static void show(char el) {
+        System.out.print("block (" + Integer.valueOf(el) + ") :");
+        for (int i = 0; i < 16; ++i)
+            System.out.print((el << i) + " ");
+        System.out.println("");
+    }
 
 }

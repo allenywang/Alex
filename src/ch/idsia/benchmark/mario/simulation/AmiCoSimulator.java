@@ -40,36 +40,32 @@ import ch.idsia.tools.MarioAIOptions;
  * Package: ch.idsia.scenarios
  */
 
-public class AmiCoSimulator
-{
-public static void main(String[] args)
-{
-    MarioAIOptions marioAIOptions = new MarioAIOptions(args);
-    marioAIOptions.setMarioInvulnerable(true);
-    String options = "-lf on -zs 1 -ls 16 -vis 1";
-    System.out.print(options);
-    Environment environment = MarioEnvironment.getInstance();
-    Agent agent = new ForwardAgent();
-    environment.reset(options);
-    while (!environment.isLevelFinished())
-    {
-        environment.tick();
+public class AmiCoSimulator {
+    public static void main(String[] args) {
+        MarioAIOptions marioAIOptions = new MarioAIOptions(args);
+        marioAIOptions.setMarioInvulnerable(true);
+        String options = "-lf on -zs 1 -ls 16 -vis 1";
+        System.out.print(options);
+        Environment environment = MarioEnvironment.getInstance();
+        Agent agent = new ForwardAgent();
+        environment.reset(options);
+        while (!environment.isLevelFinished()) {
+            environment.tick();
 //                agent.integrateObservation(environment.getSerializedLevelSceneObservationZ(options[17]),
 //                                           environment.getSerializedEnemiesObservationZ(options[18]),
 //                                           environment.getMarioFloatPos(),
 //                                           environment.getEnemiesFloatPos(),
 //                                           environment.getMarioState());
-        agent.integrateObservation(environment);
-        environment.performAction(agent.getAction());
-    }
-    System.out.println("Evaluation Info:");
-    int[] ev = environment.getEvaluationInfoAsInts();
-    for (int anEv : ev)
-    {
-        System.out.print(anEv + ", ");
-    }
+            agent.integrateObservation(environment);
+            environment.performAction(agent.getAction());
+        }
+        System.out.println("Evaluation Info:");
+        int[] ev = environment.getEvaluationInfoAsInts();
+        for (int anEv : ev) {
+            System.out.print(anEv + ", ");
+        }
 //        }
-    System.exit(0);
-}
+        System.exit(0);
+    }
 
 }

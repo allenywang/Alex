@@ -40,6 +40,13 @@ import ch.idsia.benchmark.mario.engine.sprites.Sprite;
  * Package: ch.idsia.agents.controllers
  */
 
+
+/**
+ * Agent allows Mario to move to the right and speed if there is an encounter with an enemy. 
+ * If an obstacle is in his way he cannot jump or take any other actions.
+ *
+ */
+
 public class ScaredShooty extends BasicMarioAIAgent implements Agent
 {
 public ScaredShooty()
@@ -63,7 +70,7 @@ private boolean isCreature(int c)
     }
     return false;
 }
-
+//Speeds when there is an encounter with an enemy
 public boolean[] getAction()
 {
     int x = marioEgoRow;

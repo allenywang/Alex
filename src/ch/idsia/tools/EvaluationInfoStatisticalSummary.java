@@ -45,23 +45,21 @@ import java.util.List;
  * Time: 6:56:38 AM
  * Package: ch.idsia.tools
  */
-public class EvaluationInfoStatisticalSummary
-{
+public class EvaluationInfoStatisticalSummary {
 
-private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
+    private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
 
-public static StatisticalSummary test(Agent controller, MarioAIOptions marioAIOptions, int seed)
-{
-    StatisticalSummary ss = new StatisticalSummary();
-    int kills = 0;
-    int timeLeft = 0;
-    int marioMode = 0;
-    float marioStatus = 0;
-    final Task task = new GamePlayTask(marioAIOptions);
-    float fitness = 0;
-    boolean verbose = false;
-    int trials = 0;
-    int disqualifications = 0;
+    public static StatisticalSummary test(Agent controller, MarioAIOptions marioAIOptions, int seed) {
+        StatisticalSummary ss = new StatisticalSummary();
+        int kills = 0;
+        int timeLeft = 0;
+        int marioMode = 0;
+        float marioStatus = 0;
+        final Task task = new GamePlayTask(marioAIOptions);
+        float fitness = 0;
+        boolean verbose = false;
+        int trials = 0;
+        int disqualifications = 0;
 
 //    for (int i = 0; i < numberOfLevels; i++)
 //    {
@@ -120,56 +118,53 @@ public static StatisticalSummary test(Agent controller, MarioAIOptions marioAIOp
 //    timeLeftSum += timeLeft;
 //    marioModeSum += marioMode;
 
-    return ss;
-}
+        return ss;
+    }
 
-public static double testConfig(TimingAgent controller, SimulationOptions options, int seed, int levelDifficulty, boolean paused)
-{
-    options.setLevelDifficulty(levelDifficulty);
+    public static double testConfig(TimingAgent controller, SimulationOptions options, int seed, int levelDifficulty, boolean paused) {
+        options.setLevelDifficulty(levelDifficulty);
 //    StatisticalSummary ss = test(controller, options, seed);
-    double averageTimeTaken = controller.averageTimeTaken();
+        double averageTimeTaken = controller.averageTimeTaken();
 //    System.out.printf("Difficulty %d score %.4f (avg time %.4f)\n",
 //            levelDifficulty, ss.mean(), averageTimeTaken);
 //    return ss.mean();
-    return 0;
-}
+        return 0;
+    }
 
 
-public static void score(Agent agent, int startingSeed, MarioAIOptions marioAIOptions)
-{
-    TimingAgent controller = new TimingAgent(agent);
-    //        options.setEvaluationQuota(1);
+    public static void score(Agent agent, int startingSeed, MarioAIOptions marioAIOptions) {
+        TimingAgent controller = new TimingAgent(agent);
+        //        options.setEvaluationQuota(1);
 //        options.setVisualization(false);
 //        options.setMaxFPS(true);
-    System.out.println("\nScoring controller " + agent.getName() + " with starting seed " + startingSeed);
+        System.out.println("\nScoring controller " + agent.getName() + " with starting seed " + startingSeed);
 
-    double competitionScore = 0;
+        double competitionScore = 0;
 //    killsSum = 0;
 //    marioStatusSum = 0;
 //    timeLeftSum = 0;
 //    marioModeSum = 0;
 
-    competitionScore += testConfig(controller, marioAIOptions, startingSeed, 0, false);
-    competitionScore += testConfig(controller, marioAIOptions, startingSeed, 3, false);
-    competitionScore += testConfig(controller, marioAIOptions, startingSeed, 5, false);
-    competitionScore += testConfig(controller, marioAIOptions, startingSeed, 10, false);
+        competitionScore += testConfig(controller, marioAIOptions, startingSeed, 0, false);
+        competitionScore += testConfig(controller, marioAIOptions, startingSeed, 3, false);
+        competitionScore += testConfig(controller, marioAIOptions, startingSeed, 5, false);
+        competitionScore += testConfig(controller, marioAIOptions, startingSeed, 10, false);
 
-    System.out.println("\nCompetition score: " + competitionScore + "\n");
+        System.out.println("\nCompetition score: " + competitionScore + "\n");
 //    System.out.println("Number of levels cleared = " + marioStatusSum);
 //    System.out.println("Additional (tie-breaker) info: ");
 //    System.out.println("Total time left = " + timeLeftSum);
 //    System.out.println("Total kills = " + killsSum);
 //    System.out.println("Mario mode (small, large, fire) sum = " + marioModeSum);
 //    System.out.println("TOTAL SUM for " + agent.getName() + " = " + (competitionScore + killsSum + marioStatusSum + marioModeSum + timeLeftSum));
-}
+    }
 
 
-public static void scoreAllAgents(MarioAIOptions marioAIOptions)
-{
-    int startingSeed = marioAIOptions.getLevelRandSeed();
-    for (Agent agent : AgentsPool.getAgentsCollection())
-        score(agent, startingSeed, marioAIOptions);
-}
+    public static void scoreAllAgents(MarioAIOptions marioAIOptions) {
+        int startingSeed = marioAIOptions.getLevelRandSeed();
+        for (Agent agent : AgentsPool.getAgentsCollection())
+            score(agent, startingSeed, marioAIOptions);
+    }
 
 //    final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 //

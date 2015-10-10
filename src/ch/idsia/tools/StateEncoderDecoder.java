@@ -34,8 +34,7 @@ package ch.idsia.tools;
  * Time: 3:11:31 PM
  * Package: ch.idsia.tools
  */
-public class StateEncoderDecoder
-{
+public class StateEncoderDecoder {
 //    public static String Encode(byte[][] raw_observation) {
 //
 //    }

@@ -36,6 +36,11 @@ import ch.idsia.agents.Agent;
  * Time: 6:41:42 PM
  */
 
+/**
+ * Agent is not fully functional. Does not load upon running. HumanKeyBoardAgent is used insead
+ *
+ */
+
 public class TimingAgent extends BasicMarioAIAgent implements Agent
 {
 private Agent agent;

@@ -41,12 +41,11 @@ import java.util.List;
  * Package: .Tools
  */
 
-public class Evaluator implements Runnable
-{
-Thread thisThread = null;
+public class Evaluator implements Runnable {
+    Thread thisThread = null;
 //    EvaluationOptions evaluationOptions;
 
-private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
+    private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
 
 //    private void evaluateServerMode()
 //    {
@@ -112,8 +111,7 @@ private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>()
 //        }
 //    }
 
-public List<EvaluationInfo> evaluate()
-{
+    public List<EvaluationInfo> evaluate() {
 //        if (this.evaluationOptions.isServerMode() )
 //        {
 //            this.evaluateServerMode();
@@ -121,7 +119,7 @@ public List<EvaluationInfo> evaluate()
 //        }
 
 //        Simulation simulator = new BasicSimulator(evaluationOptions.getSimulationOptionsCopy());
-    // Simulate One Level
+        // Simulate One Level
 
 //        EvaluationInfo evaluationInfo;
 
@@ -158,20 +156,19 @@ public List<EvaluationInfo> evaluate()
 //        LOGGER.println("Total Evaluation Duration (HH:mm:ss:ms) " + GlobalOptions.getDateTime(elapsed), LOGGER.VERBOSE_MODE.ALL);
 //        if (!fileName.equals(""))
 //            LOGGER.println("Exported to " + fileName, LOGGER.VERBOSE_MODE.ALL);
-    return evaluationSummary;
-}
+        return evaluationSummary;
+    }
 
 //    public void verbose(String message, LOGGER.VERBOSE_MODE verbose_mode)
 //    {
 //        LOGGER.println(message, verbose_mode);
 //    }
 
-public String getMeanEvaluationSummary()
-{
+    public String getMeanEvaluationSummary() {
 //            TODO:TASK:[M] time per level\    mean time per level
-    //TODO:TASK:[M] getMeanEvaluationSummary, compute mean, standard deviation of each component of a summary
-    return "\nEvaluation Summary:\n...\nEnd of Evaluation Summary\n";
-}
+        //TODO:TASK:[M] getMeanEvaluationSummary, compute mean, standard deviation of each component of a summary
+        return "\nEvaluation Summary:\n...\nEnd of Evaluation Summary\n";
+    }
 
 //    public String exportToMatLabFile()
 //    {
@@ -213,26 +210,23 @@ public String getMeanEvaluationSummary()
 //        //TODO:TASK:|L|
 //    }
 
-public void reset()
-{
-    evaluationSummary = new ArrayList<EvaluationInfo>();
-}
+    public void reset() {
+        evaluationSummary = new ArrayList<EvaluationInfo>();
+    }
 
 //    public Evaluator(EvaluationOptions evaluationOptions)
 //    {
 ////        init(evaluationOptions);
 //    }
 
-public void run()
-{
-    evaluate();
-}
+    public void run() {
+        evaluate();
+    }
 
-public void start()
-{
-    if (thisThread.getState() == Thread.State.NEW)
-        thisThread.start();
-}
+    public void start() {
+        if (thisThread.getState() == Thread.State.NEW)
+            thisThread.start();
+    }
 
 //    public void init(EvaluationOptions evaluationOptions)
 //    {

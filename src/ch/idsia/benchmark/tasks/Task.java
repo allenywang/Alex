@@ -38,21 +38,20 @@ import ch.idsia.tools.MarioAIOptions;
  * Package: ch.idsia.maibe.tasks
  */
 
-public interface Task
-{
-public int evaluate(final Agent controller);
+public interface Task {
+    public int evaluate(final Agent controller);
 
-public void setOptionsAndReset(final MarioAIOptions options);
+    public void setOptionsAndReset(final MarioAIOptions options);
 
-public void setOptionsAndReset(final String options);
+    public void setOptionsAndReset(final String options);
 
-void reset();
+    void reset();
 
-void doEpisodes(final int amount, final boolean verbose, final int repetitionsOfSingleEpisode);
+    void doEpisodes(final int amount, final boolean verbose, final int repetitionsOfSingleEpisode);
 
-boolean isFinished();
+    boolean isFinished();
 
-public String getName();
+    public String getName();
 
-public void printStatistics();
+    public void printStatistics();
 }

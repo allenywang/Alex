@@ -40,34 +40,29 @@ import java.util.List;
  * Time: 1:46:36 PM
  * Package: ch.idsia.maibe.experiments
  */
-public class EpisodicExperiment extends Experiment
-{
-public EpisodicExperiment(Task task, Agent agent)
-{
-    super(task, agent);
-}
+public class EpisodicExperiment extends Experiment {
+    public EpisodicExperiment(Task task, Agent agent) {
+        super(task, agent);
+    }
 
 // returns the rewards of each step as an array of doubles
 
-public List<List<Double>> doEpisodes(int amount)
-{
-    List<List<Double>> allRewards = new ArrayList<List<Double>>();
-    for (int i = 0; i < amount; ++i)
-    {
-        List<Double> rewards = new ArrayList<Double>();
-        this.stepNumber = 0;
-        // the agent is informed of the start of the episode
+    public List<List<Double>> doEpisodes(int amount) {
+        List<List<Double>> allRewards = new ArrayList<List<Double>>();
+        for (int i = 0; i < amount; ++i) {
+            List<Double> rewards = new ArrayList<Double>();
+            this.stepNumber = 0;
+            // the agent is informed of the start of the episode
 //            this.agent.newEpisode();
-        this.agent.reset();
-        this.task.reset();
-        while (!this.task.isFinished())
-        {
-            Double r = this.oneInteraction();
-            rewards.add(r);
+            this.agent.reset();
+            this.task.reset();
+            while (!this.task.isFinished()) {
+                Double r = this.oneInteraction();
+                rewards.add(r);
+            }
+            allRewards.add(rewards);
         }
-        allRewards.add(rewards);
+        return allRewards;
     }
-    return allRewards;
-}
 
 }

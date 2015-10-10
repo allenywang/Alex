@@ -34,27 +34,23 @@ package ch.idsia.benchmark.mario.engine.level;
  * Time: 4:12 PM
  * Package: ch.idsia.benchmark.mario.engine.level
  */
-public class NewLevelGenerator implements ILevelGenerator
-{
+public class NewLevelGenerator implements ILevelGenerator {
 
 
-public Level generateLevel()
-{
-    final int height = 15;
-    final int length = 320;
-    Level level = new Level(length, height);
-    return level;
-}
+    public Level generateLevel() {
+        final int height = 15;
+        final int length = 320;
+        Level level = new Level(length, height);
+        return level;
+    }
 
-public int[] giveLevelComponents()
-{
-    return new int[0];  //To change body of implemented methods use File | Settings | File Templates.
-}
+    public int[] giveLevelComponents() {
+        return new int[0];  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
-public void buildLevelPart()
-{
-    //To change body of implemented methods use File | Settings | File Templates.
-}
+    public void buildLevelPart() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 
 
 }

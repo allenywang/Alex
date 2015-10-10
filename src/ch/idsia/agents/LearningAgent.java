@@ -36,6 +36,10 @@ import ch.idsia.benchmark.tasks.LearningTask;
  * Time: 3:45:19 PM
  */
 
+/**
+ * Defines attributes for a learning AI
+ */
+
 public interface LearningAgent extends Agent
 {
 public void learn();

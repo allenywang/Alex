@@ -37,10 +37,15 @@ import ch.idsia.benchmark.mario.environments.Environment;
  * Time: 12:30:41 AM
  * Package: ch.idsia.agents.controllers;
  */
+
+/**
+ * Agent is not fully functional on its own but provides functionalities to other agents/controllers
+ */
+
 public class BasicMarioAIAgent implements Agent
 {
 protected boolean action[] = new boolean[Environment.numberOfKeys];
-protected String name = "Instance_of_BasicAIAgent._Change_this_name";
+protected String name = "BasicMarioAIAgent";
 
 /*final*/
 protected byte[][] levelScene;
@@ -71,7 +76,7 @@ protected int marioEgoCol;
 
 // values of these variables could be changed during the Agent-Environment interaction.
 // Use them to get more detailed or less detailed description of the level.
-// for information see documentation for the benchmark <link: marioai.org/marioaibenchmark/zLevels
+
 int zLevelScene = 1;
 int zLevelEnemies = 0;
 
@@ -86,16 +91,20 @@ public boolean[] getAction()
 
 }
 
+//
 public void integrateObservation(Environment environment)
 {
+	//background attributes
     levelScene = environment.getLevelSceneObservationZ(zLevelScene);
     enemies = environment.getEnemiesObservationZ(zLevelEnemies);
     mergedObservation = environment.getMergedObservationZZ(1, 0);
 
+    //basic mario attributes
     this.marioFloatPos = environment.getMarioFloatPos();
     this.enemiesFloatPos = environment.getEnemiesFloatPos();
     this.marioState = environment.getMarioState();
 
+    //platform dimensions
     receptiveFieldWidth = environment.getReceptiveFieldWidth();
     receptiveFieldHeight = environment.getReceptiveFieldHeight();
 
@@ -142,6 +151,7 @@ public String getName() { return name; }
 
 public void setName(String Name) { this.name = Name; }
 
+//
 public int getEnemiesCellValue(int x, int y)
 {
     if (x < 0 || x >= levelScene.length || y < 0 || y >= levelScene[0].length)
@@ -157,38 +167,5 @@ public int getReceptiveFieldCellValue(int x, int y)
 
     return levelScene[x][y];
 }
-//    public void integrateObservation(int[] serializedLevelSceneObservationZ, int[] serializedEnemiesObservationZ, float[] marioFloatPos, float[] enemiesFloatPos, int[] marioState)
-//    {
-//        int k = 0;
-//        for (int i = 0; i < levelScene.length; ++i)
-//        {
-//            for (int j = 0; j < levelScene[0].length; ++j)
-//            {
-//                levelScene[i][j] = (byte)serializedLevelSceneObservationZ[k];
-//                enemies[i][j] = (byte)serializedEnemiesObservationZ[k++];
-//                mergedObservation[i][j] = levelScene[i][j];
-//                // Simulating merged observation!
-//                if (enemies[i][j] != 0)
-//                {
-//                    mergedObservation[i][j] = enemies[i][j];
-//                }
-////                System.out.print(observation[i][j] + "\t");
-//            }
-////            System.out.println();
-//        }
-//        this.marioFloatPos = marioFloatPos;
-//        this.enemiesFloatPos = enemiesFloatPos;
-//        this.marioState = marioState;
-//
-//        marioStatus = marioState[0];
-//        marioMode = marioState[1];
-//        isMarioOnGround = marioState[2] == 1 ;
-//        isMarioAbleToJump = marioState[3] == 1;
-//        isMarioAbleToShoot = marioState[4] == 1;
-//        isMarioCarrying = marioState[5] == 1;
-//        getKillsTotal = marioState[6];
-//        getKillsByFire = marioState[7];
-//        getKillsByStomp = marioState[8];
-//        getKillsByShell = marioState[9];
-//    }
+  
 }

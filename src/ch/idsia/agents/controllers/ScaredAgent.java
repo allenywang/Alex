@@ -38,6 +38,12 @@ import ch.idsia.benchmark.mario.engine.sprites.Mario;
  * Time: 9:46:59 AM
  * Package: ch.idsia.controllers.agents
  */
+
+/**
+ * If Marios path is blocked by an object he will jump infinitely in the same place. 
+ * @author poojas
+ *
+ */
 public class ScaredAgent extends BasicMarioAIAgent implements Agent
 {
 public ScaredAgent()
@@ -48,6 +54,7 @@ public ScaredAgent()
 int trueJumpCounter = 0;
 //    int trueSpeedCounter = 0;
 
+//Once Marios path gets obstructed he will jump in place infinitely 
 public boolean[] getAction()
 {
     if (/*levelScene[11][13] != 0 ||*/ levelScene[this.receptiveFieldWidth / 2][this.receptiveFieldHeight / 2 + 1] != 0 ||

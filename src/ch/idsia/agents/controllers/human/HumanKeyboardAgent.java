@@ -42,6 +42,11 @@ import java.util.List;
  * Date: Mar 29, 2009
  * Time: 12:19:49 AM
  * Package: ch.idsia.controllers.agents.controllers;
+ * 
+ */
+
+/**
+ * Alows input from keyboard. This agent is used as default when no other agents are specified
  */
 public class HumanKeyboardAgent extends KeyAdapter implements Agent
 {

@@ -34,11 +34,10 @@ package ch.idsia.benchmark.mario.engine.level;
  * Time: 4:13 PM
  * Package: ch.idsia.benchmark.mario.engine.level
  */
-public interface ILevelGenerator
-{
-public Level generateLevel();
+public interface ILevelGenerator {
+    public Level generateLevel();
 
-public int[] giveLevelComponents();
+    public int[] giveLevelComponents();
 
-public void buildLevelPart();
+    public void buildLevelPart();
 }

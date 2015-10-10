@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="mario-ai">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/production/mario-ai/jdom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/production/mario-ai/asm-all-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/production/mario-ai/junit-4.8.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

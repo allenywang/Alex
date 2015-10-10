@@ -39,6 +39,9 @@ import java.util.Random;
  * Time: 10:37:18 PM
  * Package: ch.idsia.controllers.agents.controllers;
  */
+/**
+ *This agent performs random actions while in the level. Actions include jumping, moving in various directions, and shooting fireballs. 
+ */
 public class RandomAgent extends BasicMarioAIAgent implements Agent
 {
 public RandomAgent()
@@ -66,7 +69,6 @@ public boolean[] getAction()
         toggleParticularAction = (i == 0 && toggleParticularAction && R.nextBoolean()) ? R.nextBoolean() : toggleParticularAction;
         toggleParticularAction = (i == 1 || i > 3 && !toggleParticularAction) ? R.nextBoolean() : toggleParticularAction;
         toggleParticularAction = (i > 3 && !toggleParticularAction) ? R.nextBoolean() : toggleParticularAction;
-//            toggleParticularAction = (i == 4 && !toggleParticularAction ) ? R.nextBoolean() :  toggleParticularAction;
         ret[i] = toggleParticularAction;
     }
     if (ret[1])

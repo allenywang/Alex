@@ -38,6 +38,11 @@ import ch.idsia.benchmark.mario.environments.Environment;
  * Time: 4:03:46 AM
  */
 
+/**
+ *Agent moves to right with speed unless a particular event takes place then he
+ * jumps. Does not avoid enemies as well as the ForwardJumpingAgent
+ */
+
 public class ForwardAgent extends BasicMarioAIAgent implements Agent
 {
 int trueJumpCounter = 0;
@@ -57,7 +62,7 @@ public void reset()
     trueJumpCounter = 0;
     trueSpeedCounter = 0;
 }
-
+//Checks surroundings of mario 
 private boolean DangerOfAny()
 {
 
@@ -72,6 +77,8 @@ private boolean DangerOfAny()
             return false;
 }
 
+
+// Circumstances under which mario can or cannot jump. If none of these are met he continues to move to the right with speed. 
 public boolean[] getAction()
 {
     // this Agent requires observation integrated in advance.

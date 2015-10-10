@@ -40,6 +40,12 @@ import java.io.IOException;
  * Time: 21:19
  * Package: ch.idsia.agents
  */
+
+/**
+ *Class takes in an agent argument and verifies to see if it's a valid input.
+ *Else generates an error message and uses keyboard as default agent
+ */
+
 public final class AgentLoader
 {
 private static final AgentLoader _instance = new AgentLoader();
@@ -51,6 +57,7 @@ public static AgentLoader getInstance()
     return _instance;
 }
 
+//Error checks to see if agent is valid
 public Agent loadAgent(String name, boolean isPunj)
 {
     Agent agent = null;
@@ -62,7 +69,7 @@ public Agent loadAgent(String name, boolean isPunj)
         else
             agent = (Agent) Class.forName(name).newInstance();
     } catch (ClassNotFoundException e)
-    {
+    {//Gernerates Error Messages
         System.out.println("[~ Mario AI ~] :" + name + " is not a class name; trying to load a wox definition with that name.");
         try
         {
@@ -81,13 +88,14 @@ public Agent loadAgent(String name, boolean isPunj)
         System.out.println("[~ Mario AI ~] : agent = " + agent);
     } catch (Exception e)
     {
-//            e.printStackTrace ();
+    	//Uses human keyboard as default
         agent = new HumanKeyboardAgent();
         System.err.println("[~ Mario AI ~] : Agent is null. Loading agent with name " + name + " failed.");
         System.out.println("Agent has been set to default: " + agent);
 //            System.exit (1);
     }
 
+    //if valid agent generates class file and utilizes it
     if (isPunj)
     {
         try

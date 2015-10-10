@@ -34,7 +34,6 @@ package ch.idsia.utils;
  * Time: 5:07:46 AM
  * Package: ch.idsia.utils
  */
-public class ErrorCodes
-{
-public static final int FILE_NAME_OR_LOAD_PROBLEM = -3;
+public class ErrorCodes {
+    public static final int FILE_NAME_OR_LOAD_PROBLEM = -3;
 }

@@ -39,6 +39,10 @@ import ch.idsia.benchmark.mario.environments.Environment;
  * Package: ch.idsia.agents.controllers;
  */
 
+/**
+ * Agent focuses on speed and jumping right 
+ */
+
 public class ForwardJumpingAgent extends BasicMarioAIAgent implements Agent
 {
 public ForwardJumpingAgent()
@@ -60,4 +64,3 @@ public void reset()
     action[Mario.KEY_SPEED] = true;
 }
 }
-

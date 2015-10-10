@@ -42,92 +42,79 @@ import java.util.regex.Pattern;
  * Time: 1:13:13 AM
  * Package: ch.idsia.tools
  */
-public class ReplayerOptions
-{
-public static class Interval implements Serializable
-{
-    public int from;
-    public int to;
+public class ReplayerOptions {
+    private Queue<Interval> chunks = new LinkedList<Interval>();
+    private Queue<String> replays = new LinkedList<String>();
+    private String regex = "[a-zA-Z_0-9.-]+(;\\d+:\\d+)*";
+    public ReplayerOptions(String options) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(options);
 
-    public Interval()
-    {
-        from = 0;
-        to = 0;
+        while (matcher.find()) {
+            String group = matcher.group();
+            replays.add(group);
+        }
     }
 
-    public Interval(String interval)
-    {
-        String[] nums = interval.split(":");
-        from = Integer.valueOf(nums[0]);
-        to = Integer.valueOf(nums[1]);
+    public String getNextReplayFile() {
+        String s = replays.poll();
+        if (s == null)
+            return null;
+
+        String[] subgroups = s.split(";");
+        if (subgroups.length == 0)
+            return null;
+
+        String fileName = subgroups[0];
+        chunks.clear();
+
+        if (subgroups.length > 1)
+            for (int i = 1; i < subgroups.length; i++)
+                chunks.add(new Interval(subgroups[i]));
+
+        return fileName;
     }
 
-    public Interval(final int i, final int i1)
-    {
-        from = i;
-        to = i1;
+    public Interval getNextIntervalInMarioseconds() {
+        return chunks.poll();
     }
-}
 
-private Queue<Interval> chunks = new LinkedList<Interval>();
-private Queue<String> replays = new LinkedList<String>();
-private String regex = "[a-zA-Z_0-9.-]+(;\\d+:\\d+)*";
+    public Interval getNextIntervalInTicks() {
+        Interval i = chunks.poll();
+        Interval res = null;
 
-public ReplayerOptions(String options)
-{
-    Pattern pattern = Pattern.compile(regex);
-    Matcher matcher = pattern.matcher(options);
+        if (i != null)
+            res = new Interval(i.from * GlobalOptions.mariosecondMultiplier, i.to * GlobalOptions.mariosecondMultiplier);
 
-    while (matcher.find())
-    {
-        String group = matcher.group();
-        replays.add(group);
+        return res;
     }
-}
 
-public String getNextReplayFile()
-{
-    String s = replays.poll();
-    if (s == null)
-        return null;
+    public boolean hasMoreChunks() {
+        return !chunks.isEmpty();
+    }
 
-    String[] subgroups = s.split(";");
-    if (subgroups.length == 0)
-        return null;
+    public void setChunks(Queue chunks) {
+        this.chunks = chunks;
+    }
 
-    String fileName = subgroups[0];
-    chunks.clear();
+    public static class Interval implements Serializable {
+        public int from;
+        public int to;
 
-    if (subgroups.length > 1)
-        for (int i = 1; i < subgroups.length; i++)
-            chunks.add(new Interval(subgroups[i]));
+        public Interval() {
+            from = 0;
+            to = 0;
+        }
 
-    return fileName;
-}
+        public Interval(String interval) {
+            String[] nums = interval.split(":");
+            from = Integer.valueOf(nums[0]);
+            to = Integer.valueOf(nums[1]);
+        }
 
-public Interval getNextIntervalInMarioseconds()
-{
-    return chunks.poll();
-}
-
-public Interval getNextIntervalInTicks()
-{
-    Interval i = chunks.poll();
-    Interval res = null;
-
-    if (i != null)
-        res = new Interval(i.from * GlobalOptions.mariosecondMultiplier, i.to * GlobalOptions.mariosecondMultiplier);
-
-    return res;
-}
-
-public boolean hasMoreChunks()
-{
-    return !chunks.isEmpty();
-}
-
-public void setChunks(Queue chunks)
-{
-    this.chunks = chunks;
-}
+        public Interval(final int i, final int i1) {
+            from = i;
+            to = i1;
+        }
+    }
 }

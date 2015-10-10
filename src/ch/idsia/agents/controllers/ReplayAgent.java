@@ -40,6 +40,10 @@ import java.io.IOException;
  * Time: 2:08:47 AM
  * Package: ch.idsia.agents.controllers
  */
+
+/**
+ * The agent fails to load.Purpose is to return mario state and position array
+ */
 public class ReplayAgent implements Agent
 {
 private Replayer replayer;
@@ -52,8 +56,6 @@ public ReplayAgent(String name)
 }
 
 //this method should return mario state and position array
-//byte[] TODO: fix comment
-
 public void setReplayer(Replayer replayer)
 {
     this.replayer = replayer;

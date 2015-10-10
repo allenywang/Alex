@@ -25,6 +25,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+/**
+ * 
+ */
+
 package ch.idsia.agents;
 
 import ch.idsia.benchmark.mario.environments.Environment;
@@ -36,6 +41,7 @@ import ch.idsia.benchmark.mario.environments.Environment;
  * Time: 8:46:42 PM
  * package ch.idsia.controllers.agents;
  */
+
 public interface Agent
 {
 boolean[] getAction();

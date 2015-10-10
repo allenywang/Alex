@@ -41,6 +41,11 @@ import java.awt.event.KeyEvent;
  * Time: 3:36:16 AM
  * Package: ch.idsia.controllers.agents.controllers;
  */
+
+/**
+ * This is agent allows user to use the mouse as a means of controlling marios actions
+ */
+
 public class CheaterKeyboardAgent extends KeyAdapter implements Agent
 {
 public static final int CHEAT_KEY_PAUSE = 6;

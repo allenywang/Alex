@@ -29,6 +29,8 @@ package ch.idsia.scenarios;
 
 import ch.idsia.agents.Agent;
 import ch.idsia.agents.controllers.ForwardAgent;
+import ch.idsia.benchmark.mario.engine.MP32;
+import ch.idsia.benchmark.mario.engine.MarioVisualComponent;
 import ch.idsia.benchmark.mario.environments.Environment;
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
@@ -43,36 +45,31 @@ import java.io.IOException;
  * Package: ch.idsia
  */
 
-public class Custom
-{
-public static void main(String[] args)
-{
-//final String argsString = "-vis on";
-    final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
-    final Agent agent = new ForwardAgent();
-    final BasicTask basicTask = new BasicTask(marioAIOptions);
-    for (int i = 0; i < 10; ++i)
-    {
-        int seed = 0;
-        do
-        {
-            marioAIOptions.setLevelDifficulty(i);
-            marioAIOptions.setLevelRandSeed(seed++);
-            basicTask.setOptionsAndReset(marioAIOptions);
-            basicTask.runSingleEpisode(1);
-            System.out.println(basicTask.getEnvironment().getEvaluationInfoAsString());
-        } while (basicTask.getEnvironment().getEvaluationInfo().marioStatus != Environment.MARIO_STATUS_WIN);
-    }
-    Runtime rt = Runtime.getRuntime();
-    try
-    {
-//            Process proc = rt.exec("/usr/local/bin/mate " + marioTraceFileName);
-        Process proc = rt.exec("python hello.py");
-    } catch (IOException e)
-    {
-        e.printStackTrace();
-    }
-    System.exit(0);
+public class Custom {
+    public static void main(String[] args) {
 
-}
+        final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
+        final BasicTask basicTask = new BasicTask(marioAIOptions);
+
+
+
+
+        marioAIOptions.setMarioMode(0);
+        marioAIOptions.setLevelDifficulty(0);
+        basicTask.runSingleEpisode(1);
+        marioAIOptions.setLevelDifficulty(15);
+        marioAIOptions.setLevelRandSeed(15);
+        MP32 mp3 = new MP32();
+        mp3.play();
+        MarioVisualComponent.clevel = 2;
+        marioAIOptions.setMarioInvulnerable(true);
+        marioAIOptions.setMarioMode(2);
+        basicTask.runSingleEpisode(1);
+
+
+
+
+        System.exit(0);
+
+    }
 }

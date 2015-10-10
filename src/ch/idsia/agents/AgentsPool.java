@@ -40,6 +40,9 @@ import java.util.*;
  * Package: ch.idsia.controllers.agents
  */
 
+/**
+ * 
+ */
 public final class AgentsPool
 {
 private static Agent currentAgent = null;
